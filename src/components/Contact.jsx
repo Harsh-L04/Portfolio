@@ -23,8 +23,8 @@ export default function Contact() {
     setStatus("Sending...");
   
     try {
-      // Updated URL to call Express server on port 3001
-      const res = await fetch("http://localhost:3001/api/sendEmail", {
+      // This will work both locally and in production
+      const res = await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -33,14 +33,14 @@ export default function Contact() {
       const data = await res.json();
   
       if (data.success) {
-        setStatus("Message sent successfully! 🎉");
+        setStatus("Message sent successfully! 🎉 I'll get back to you soon.");
         setForm({ name: "", email: "", message: "" });
       } else {
         setStatus(data.error || "Failed to send message. Please try again.");
       }
     } catch (err) {
       console.error("Error sending message:", err);
-      setStatus("Network error. Make sure the backend server is running on port 3001.");
+      setStatus("Network error. Please try again or contact me directly.");
     } finally {
       setIsLoading(false);
     }
@@ -116,7 +116,7 @@ export default function Contact() {
             required
             disabled={isLoading}
             className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-300 disabled:opacity-50 ${
-              isDark ? "bg-gray-800 border-gray-700" : "bg-white border-gray-300"
+              isDark ? "bg-gray-800 border-gray-700 text-white placeholder-gray-400" : "bg-white border-gray-300"
             }`}
           />
 
@@ -129,7 +129,7 @@ export default function Contact() {
             required
             disabled={isLoading}
             className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-300 disabled:opacity-50 ${
-              isDark ? "bg-gray-800 border-gray-700" : "bg-white border-gray-300"
+              isDark ? "bg-gray-800 border-gray-700 text-white placeholder-gray-400" : "bg-white border-gray-300"
             }`}
           />
         </div>
@@ -143,7 +143,7 @@ export default function Contact() {
           required
           disabled={isLoading}
           className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-300 disabled:opacity-50 ${
-            isDark ? "bg-gray-800 border-gray-700" : "bg-white border-gray-300"
+            isDark ? "bg-gray-800 border-gray-700 text-white placeholder-gray-400" : "bg-white border-gray-300"
           }`}
         />
 

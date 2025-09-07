@@ -1,31 +1,29 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
+// api/sendEmail.js (in your project root, not src/)
 import { Resend } from 'resend';
 
-// Load environment variables
-dotenv.config({ path: '.env.local' });
-
-const app = express();
-const PORT = 3001;
-
-// Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+export default async function handler(req, res) {
+  // Enable CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-// Test route
-app.get('/api/test', (req, res) => {
-  res.json({ message: 'Backend server is running!' });
-});
+  // Handle preflight request
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
 
-// API route for sending emails
-app.post('/api/sendEmail', async (req, res) => {
+  // Only allow POST requests
+  if (req.method !== 'POST') {
+    return res.status(405).json({ 
+      success: false, 
+      error: "Method not allowed. Use POST." 
+    });
+  }
+
   try {
-    console.log('Received email request:', req.body);
-    
     const { name, email, message } = req.body;
 
     // Validate input
@@ -50,7 +48,7 @@ app.post('/api/sendEmail', async (req, res) => {
       console.error('RESEND_API_KEY not found in environment variables');
       return res.status(500).json({
         success: false,
-        error: "Server configuration error. Please check API key."
+        error: "Server configuration error."
       });
     }
 
@@ -58,12 +56,10 @@ app.post('/api/sendEmail', async (req, res) => {
     const sanitizedName = name.replace(/[<>]/g, '');
     const sanitizedMessage = message.replace(/[<>]/g, '');
 
-    console.log('Sending email with Resend...');
-
     // Send email using Resend
     const data = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
-      to: "202201493@daiict.ac.in", // 👉 REPLACE WITH YOUR ACTUAL EMAIL
+      to: "202201493@dau.ac.in", // 👉 REPLACE WITH YOUR ACTUAL EMAIL
       subject: `New Portfolio Message from ${sanitizedName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e1e5e9; border-radius: 8px;">
@@ -99,26 +95,18 @@ This message was sent from your portfolio contact form.
       `
     });
 
-    console.log('Email sent successfully:', data);
-
-    res.status(200).json({ 
+    return res.status(200).json({ 
       success: true, 
-      message: "Email sent successfully",
+      message: "Email sent successfully!",
       data: data
     });
 
   } catch (error) {
     console.error("Resend API Error:", error);
     
-    res.status(500).json({ 
+    return res.status(500).json({ 
       success: false, 
-      error: "Failed to send email. Please try again later.",
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      error: "Failed to send email. Please try again later."
     });
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`🚀 Backend server running on http://localhost:${PORT}`);
-  console.log(`📧 API endpoint: http://localhost:${PORT}/api/sendEmail`);
-});
+}
