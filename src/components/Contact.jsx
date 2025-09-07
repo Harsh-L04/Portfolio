@@ -8,6 +8,7 @@ export default function Contact() {
   const { isDark } = useTheme();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const sectionRef = useRef(null);
   const isInview = useInView(sectionRef, { once: true, margin: "100px" });
 
@@ -18,10 +19,11 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     setStatus("Sending...");
   
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/sendEmail", { // Fixed: correct API endpoint
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -30,13 +32,16 @@ export default function Contact() {
       const data = await res.json();
   
       if (data.success) {
-        setStatus("Message sent successfully!");
+        setStatus("Message sent successfully! 🎉");
         setForm({ name: "", email: "", message: "" });
       } else {
-        setStatus(data.msg || "Failed to send message.");
+        setStatus(data.error || "Failed to send message. Please try again.");
       }
     } catch (err) {
-      setStatus("Server error. Try again later.");
+      console.error("Error sending message:", err);
+      setStatus("Network error. Please check your connection and try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
   
@@ -82,7 +87,7 @@ export default function Contact() {
             isDark ? "text-gray-400" : "text-gray-600"
           }`}
         >
-          Ready to start your next project? Let’s discuss how we can bring your
+          Ready to start your next project? Let's discuss how we can bring your
           ideas to life.
         </motion.p>
       </motion.div>
@@ -108,7 +113,8 @@ export default function Contact() {
             onChange={handleChange}
             placeholder="Your Name"
             required
-            className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-300 ${
+            disabled={isLoading}
+            className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-300 disabled:opacity-50 ${
               isDark ? "bg-gray-800 border-gray-700" : "bg-white border-gray-300"
             }`}
           />
@@ -120,7 +126,8 @@ export default function Contact() {
             onChange={handleChange}
             placeholder="Email Address"
             required
-            className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-300 ${
+            disabled={isLoading}
+            className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-300 disabled:opacity-50 ${
               isDark ? "bg-gray-800 border-gray-700" : "bg-white border-gray-300"
             }`}
           />
@@ -133,30 +140,35 @@ export default function Contact() {
           onChange={handleChange}
           placeholder="Your Message"
           required
-          className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-300 ${
+          disabled={isLoading}
+          className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-300 disabled:opacity-50 ${
             isDark ? "bg-gray-800 border-gray-700" : "bg-white border-gray-300"
           }`}
         />
 
         <button
           type="submit"
-          className="flex items-center justify-center gap-2 w-full md:w-auto rounded-lg bg-blue-600 text-white px-5 py-2.5 font-medium hover:bg-blue-700 transition disabled:opacity-60"
-          disabled={status === "Sending..."}
+          className="flex items-center justify-center gap-2 w-full md:w-auto rounded-lg bg-blue-600 text-white px-5 py-2.5 font-medium hover:bg-blue-700 transition disabled:opacity-60 disabled:cursor-not-allowed"
+          disabled={isLoading}
         >
           <Send className="h-4 w-4" />
-          {status === "Sending..." ? "Sending..." : "Send Message"}
+          {isLoading ? "Sending..." : "Send Message"}
         </button>
 
         {status && (
-          <p className="text-sm mt-2 text-left">
+          <p className={`text-sm mt-2 text-left ${
+            status.includes("successfully") ? "text-green-600" : 
+            status.includes("Sending") ? "text-blue-600" : "text-red-600"
+          }`}>
             {status}
           </p>
         )}
       </form>
+      
       {/* Copyright */}
       <div className="text-center mt-8 relative z-10">
         <p
-          className={`text-mt ${
+          className={`text-sm ${
             isDark ? "text-gray-500" : "text-gray-500"
           }`}
         >
