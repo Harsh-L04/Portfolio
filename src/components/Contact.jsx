@@ -23,7 +23,8 @@ export default function Contact() {
     setStatus("Sending...");
   
     try {
-      const res = await fetch("/api/sendEmail", { // Fixed: correct API endpoint
+      // Updated URL to call Express server on port 3001
+      const res = await fetch("http://localhost:3001/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -39,7 +40,7 @@ export default function Contact() {
       }
     } catch (err) {
       console.error("Error sending message:", err);
-      setStatus("Network error. Please check your connection and try again.");
+      setStatus("Network error. Make sure the backend server is running on port 3001.");
     } finally {
       setIsLoading(false);
     }
