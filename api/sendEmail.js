@@ -64,7 +64,7 @@ export default async function handler(req, res) {
     // Send email using Resend
     const data = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
-      to: "harshlad0411@gmail.com", // Replace with your actual email
+      to: "202201493@dau.ac.in", // Replace with your actual email
       subject: `New Portfolio Message from ${sanitizedName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e1e5e9; border-radius: 8px;">
