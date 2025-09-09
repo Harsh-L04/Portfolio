@@ -74,7 +74,7 @@ const Project = () => {
           
           <motion.h2 
             variants={itemvariants}
-            className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-4 sm:mb-6 leading-tight px-2 sm:px-0 ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-light leading-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
@@ -83,8 +83,8 @@ const Project = () => {
           
           <motion.p 
             variants={itemvariants}
-            className={`text-xl leading-relaxed max-w-2xl mx-auto ${
-              isDark ? "text-gray-400" : "text-gray-600"
+            className={`text-xl leading-relaxed max-w-xl mx-auto ${
+              isDark ? "text-gray-500" : "text-gray-700"
             }`}
           >
             A collection of projects that showcase my expertise in building modern web applications and solving complex problems

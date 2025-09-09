@@ -40,15 +40,7 @@ export default function SkillsSection() {
       } relative overflow-hidden`}
     >
       {/* Background Elements */}
-      <motion.div style={{y}} className="absolute inset-0 overflow-hidden">
-        <div className={`absolute top-40 right-1/4 w-72 h-72 rounded-full blur-3xl opacity-5 ${
-          isDark ? "bg-blue-500" : "bg-blue-400"
-        }`}/>
-        <div className={`absolute bottom-40 left-1/4 w-64 h-64 rounded-full blur-3xl opacity-5 ${
-          isDark ? "bg-purple-500" : "bg-purple-400"
-        }`}/>
-      </motion.div>
-
+      
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <motion.div 
@@ -75,8 +67,8 @@ export default function SkillsSection() {
 
           <motion.p 
             variants={itemvariants} 
-            className={`text-xl leading-relaxed max-w-2xl mx-auto ${
-              isDark ? "text-gray-400" : "text-gray-600"
+            className={`text-xl leading-relaxed max-w-xl mx-auto ${
+              isDark ? "text-gray-500" : "text-gray-700"
             } `}
           >
            A versatile set of programming languages, frameworks, and tools for building efficient, scalable, and user-friendly applications.

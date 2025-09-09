@@ -111,7 +111,7 @@ const AboutMe = () => {
           viewport={{ once: true }}
         >
           <motion.h3
-            className={`text-2xl sm:text-3xl font-semibold mb-6 text-center lg:text-left ${
+            className={`text-2xl sm:text-3xl  mb-6 text-center lg:text-left ${
               isDark ? "text-white" : "text-gray-900"
             }`}
             variants={item}
@@ -119,25 +119,14 @@ const AboutMe = () => {
             Why I Believe in Technology
           </motion.h3>
           <motion.p
-            className={`leading-relaxed mb-6 text-base sm:text-lg text-center lg:text-left ${
-              isDark ? "text-gray-300" : "text-gray-700"
+            className={`leading-relaxed mb-6 text-base text-xl text-center lg:text-left ${
+              isDark ? "text-gray-500" : "text-gray-700"
             }`}
             variants={item}
           >
             I believe technology should be a bridge that connects people and solves
             real-world problems. My passion lies in crafting digital experiences that
             are not just functional, but delightful and accessible to everyone.
-          </motion.p>
-          <motion.p
-            className={`mb-6 text-base sm:text-lg leading-relaxed text-center lg:text-left ${
-              isDark ? "text-gray-400" : "text-gray-600"
-            }`}
-            variants={item}
-          >
-            When I'm not coding, you'll find me exploring new frameworks,
-            contributing to open source, or mentoring aspiring developers. I
-            love the constant evolution of web technologies and the endless
-            possibilities they bring to create meaningful digital experiences.
           </motion.p>
         </motion.div>
 
@@ -149,7 +138,7 @@ const AboutMe = () => {
           transition={{ duration: 0.6 }}
         >
           <h3
-            className={`text-2xl sm:text-3xl font-semibold ${
+            className={`text-xl sm:text-2xl lg:text-3xl font-light leading-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
@@ -184,7 +173,7 @@ const AboutMe = () => {
                   {/* Content Card */}
                   <motion.div
                     whileHover={{ y: -5 }}
-                    className={`w-full max-w-sm h-[200px] p-5 rounded-2xl border shadow-md transition-all duration-300 grid grid-rows-[auto_1fr_auto] ${
+                    className={`w-full max-w-sm h-[230px] p-5 rounded-2xl border shadow-md transition-all duration-300 grid grid-rows-[auto_1fr_auto] ${
                       isDark
                         ? "bg-gray-900 border-gray-800 hover:border-gray-700"
                         : "bg-white border-gray-200 hover:border-gray-300"

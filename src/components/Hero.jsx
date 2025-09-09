@@ -4,7 +4,7 @@ import {
   useTransform,
 } from "framer-motion";
 
-import { ArrowDown , Mail} from "lucide-react";
+import {   Mail} from "lucide-react";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { useTheme } from "../context/Themecontext";
 import { containervariants, itemvariants } from "../utils/helper";
@@ -63,29 +63,7 @@ const Hero = () => {
         className="min-h-screen flex items-center justify-center relative px-4 md:px-8 lg:px-16 py-8 md:py-12 lg:py-16"
       >
         <div className="absolute inset-0 overflow-hidden">
-          {/* Decorative Blobs - Responsive sizing */}
-          <motion.div
-            animate={{ scale: [1, 1.1, 1], rotate: [0, 180, 360] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className={`absolute 
-              top-10 right-5 w-24 h-24 
-              md:top-20 md:right-20 md:w-40 md:h-40 
-              lg:w-64 lg:h-64 
-              rounded-full blur-3xl opacity-10 
-              ${isDark ? "bg-blue-500" : "bg-blue-400"}`}
-          />
-
-          <motion.div
-            animate={{ scale: [1.1, 1, 1.1], rotate: [360, 180, 0] }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className={`absolute 
-              bottom-10 left-5 w-20 h-20 
-              md:bottom-16 md:left-16 md:w-32 md:h-32 
-              lg:bottom-20 lg:left-20 lg:w-48 lg:h-48 
-              rounded-full blur-3xl opacity-10 
-              ${isDark ? "bg-purple-500" : "bg-purple-400"}`}
-          />
-
+          
           {/* Main Content Container */}
           <div className="max-w-7xl mx-auto w-full z-10  flex flex-col mt-20 items-center">
             
@@ -99,7 +77,7 @@ const Hero = () => {
               >
                 {/* Profile Image - Small */}
                 <motion.div variants={imagevariants} className="mb-4">
-                  <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto relative">
+                  <div className="w-28 h-30 sm:w-32 sm:h-32 mx-auto relative">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       className={`w-full h-full rounded-2xl overflow-hidden border-2 ${
@@ -132,7 +110,7 @@ const Hero = () => {
                 </motion.div>
 
                 {/* Heading - Small */}
-                <motion.h1 variants={itemvariants} className="text-2xl sm:text-3xl font-light leading-tight">
+                <motion.h1 variants={itemvariants} className="text-3xl  font-light leading-tight">
                   <span className={`${isDark ? "text-white" : "text-gray-900"}`}>
                     Hi, I am
                   </span>
@@ -145,9 +123,9 @@ const Hero = () => {
                 {/* Description - Small */}
                 <motion.p
                   variants={itemvariants}
-                  className={`text-sm sm:text-base ${
-                    isDark ? "text-gray-400" : "text-gray-600"
-                  } max-w-sm mx-auto font-light leading-relaxed`}
+                  className={`text-xl  text-center ${
+                    isDark ? "text-gray-500" : "text-gray-700"
+                  }  mx-auto font-light leading-relaxed`}
                 >
                   I craft beautiful, functional web applications with modern
                   technologies and thoughtful user experiences.
@@ -460,7 +438,7 @@ const Hero = () => {
                       repeat: Infinity,
                       ease: "linear",
                     }}
-                    className="absolute top-0.55 left-0.55 w-[300px] lg:w-[350px] xl:w-[380px] 2xl:w-[420px] h-[330px] lg:h-[380px] xl:h-[420px] 2xl:h-[450px] rounded-3xl border border-blue-500/25 z-0"
+                    className="absolute top-0.55 left-0.55 w-[320px] h-[330px]  rounded-3xl border border-blue-500/25 z-0"
                     style={{ transform: 'translate(-50%, -50%)' }}
                   />
                   <motion.div
@@ -470,7 +448,7 @@ const Hero = () => {
                       repeat: Infinity,
                       ease: "linear",
                     }}
-                    className="absolute top-0.55 left-0.55 w-[350px] lg:w-[400px] xl:w-[430px] 2xl:w-[470px] h-[380px] lg:h-[430px] xl:h-[470px] 2xl:h-[510px] rounded-3xl border border-purple-500/30 z-0"
+                    className="absolute top-0.55 left-0.55 w-[350px] h-[380px]  rounded-3xl border border-purple-500/30 z-0"
                     style={{ transform: 'translate(-50%, -50%)' }}
                   />
 
@@ -479,7 +457,7 @@ const Hero = () => {
                     {/* Tech Stack - Above Image */}
                     <motion.div
                       variants={itemvariants}
-                      className="flex items-center space-x-4 xl:space-x-3 text-xs uppercase tracking-widest mb-6 xl:mb-8 z-50 flex-wrap justify-center"
+                      className="flex items-center space-x-2 xl:space-x-3 text-xs uppercase tracking-widest mb-6 xl:mb-8 z-50 flex-wrap justify-center"
                     >
                       <span className={isDark ? "text-gray-300" : "text-gray-600"}>React</span>
                       <span className={isDark ? "text-gray-500" : "text-gray-400"}>·</span>
@@ -493,7 +471,7 @@ const Hero = () => {
                     {/* Profile Image - Large */}
                     <motion.div
                       whileHover={{ scale: 1.02 }}
-                      className={`w-56 lg:w-64 xl:w-72 2xl:w-80 h-64 lg:h-80 xl:h-84 2xl:h-96 rounded-3xl overflow-hidden border-4 ${
+                      className={`w-60 h-70 rounded-3xl overflow-hidden border-4 ${
                         isDark ? "border-gray-800" : "border-gray-300"
                       } shadow-3xl z-50 relative`}
                     >
@@ -505,17 +483,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Scroll Indicator */}
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-          >
-            <ArrowDown
-              size={20}
-              className={isDark ? "text-gray-600" : "text-gray-400"}
-            />
-          </motion.div>
+          
         </div>
       </motion.section>
     </div>

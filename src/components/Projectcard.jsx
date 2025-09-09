@@ -87,7 +87,7 @@ const ProjectCard = ({ project }) => {
         {/* Hover / Tap Content */}
         <motion.div
           className={`absolute inset-0 flex flex-col justify-center items-center p-6 text-center ${
-            isDark ? 'bg-black/40' : 'bg-black/50'
+            isDark ? 'bg-black/90' : 'bg-black/80'
           }`}
           variants={overlayVariants}
           initial="rest"

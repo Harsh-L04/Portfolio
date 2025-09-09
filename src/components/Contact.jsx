@@ -23,28 +23,31 @@ export default function Contact() {
     setStatus("Sending...");
   
     try {
-      // This will work both locally and in production
-      const res = await fetch("/api/sendEmail", {
+      const res = await fetch("http://localhost:5000/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
   
+      console.log("📡 Raw response:", res);
+  
       const data = await res.json();
+      console.log("📡 Parsed response:", data);
   
       if (data.success) {
-        setStatus("Message sent successfully! 🎉 I'll get back to you soon.");
+        setStatus(data.message || "Message sent successfully! 🎉 I'll get back to you soon.");
         setForm({ name: "", email: "", message: "" });
       } else {
         setStatus(data.error || "Failed to send message. Please try again.");
       }
     } catch (err) {
-      console.error("Error sending message:", err);
+      console.error("❌ Network error:", err);
       setStatus("Network error. Please try again or contact me directly.");
     } finally {
       setIsLoading(false);
     }
   };
+  
   
   return (
     <section
@@ -77,14 +80,14 @@ export default function Contact() {
       >
         <motion.h2
           variants={itemvariants}
-          className="text-3xl md:text-4xl font-bold"
+          className="text-3xl sm:text-4xl lg:text-5xl font-light leading-tight"
         >
           Get In <span className="text-blue-500">Touch</span>
         </motion.h2>
 
         <motion.p
           variants={itemvariants}
-          className={`mt-2 ${
+          className={`mt-2 text-xl ${
             isDark ? "text-gray-400" : "text-gray-600"
           }`}
         >
@@ -166,16 +169,7 @@ export default function Contact() {
         )}
       </form>
       
-      {/* Copyright */}
-      <div className="text-center mt-8 relative z-10">
-        <p
-          className={`text-sm ${
-            isDark ? "text-gray-500" : "text-gray-500"
-          }`}
-        >
-          © {new Date().getFullYear()} Harsh Lad. All rights reserved.
-        </p>
-      </div>
+     
     </section>
   );
 }
