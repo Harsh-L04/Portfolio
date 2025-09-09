@@ -29,10 +29,10 @@ export default function Contact() {
         body: JSON.stringify(form),
       });
   
-      console.log("📡 Raw response:", res);
+      console.log("Raw response:", res);
   
       const data = await res.json();
-      console.log("📡 Parsed response:", data);
+      console.log("Parsed response:", data);
   
       if (data.success) {
         setStatus(data.message || "Message sent successfully! 🎉 I'll get back to you soon.");
@@ -41,7 +41,7 @@ export default function Contact() {
         setStatus(data.error || "Failed to send message. Please try again.");
       }
     } catch (err) {
-      console.error("❌ Network error:", err);
+      console.error(" Network error:", err);
       setStatus("Network error. Please try again or contact me directly.");
     } finally {
       setIsLoading(false);
