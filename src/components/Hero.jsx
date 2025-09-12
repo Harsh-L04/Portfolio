@@ -8,7 +8,7 @@ import {   Mail} from "lucide-react";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { useTheme } from "../context/Themecontext";
 import { containervariants, itemvariants } from "../utils/helper";
-import profile_pic from "../assets/img/image.svg";
+import profile_pic from "../assets/img/i1.jpg";
 
 const Hero = () => {
   const { isDark } = useTheme();
