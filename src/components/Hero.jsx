@@ -68,7 +68,7 @@ const Hero = () => {
           <div className="max-w-7xl mx-auto w-full z-10  flex flex-col mt-20 items-center">
             
             {/* SMALL DEVICES: Mobile-First Layout (< 768px) */}
-            <div className="block md:hidden w-full mt-30">
+            <div className="block sm:hidden ">
               <motion.div
                 initial="hidden"
                 animate="visible"
@@ -123,9 +123,9 @@ const Hero = () => {
                 {/* Description - Small */}
                 <motion.p
                   variants={itemvariants}
-                  className={`text-xl  text-center ${
-                    isDark ? "text-gray-500" : "text-gray-700"
-                  }  mx-auto font-light leading-relaxed`}
+                  className={`text-xl text-center ${
+    isDark ? "text-gray-500" : "text-gray-700"
+  } mx-auto font-light leading-relaxed px-4`}
                 >
                   I craft beautiful, functional web applications with modern
                   technologies and thoughtful user experiences.

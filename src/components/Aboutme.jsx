@@ -91,7 +91,7 @@ const AboutMe = () => {
               isDark ? "text-gray-500" : "text-gray-600"
             }`}
           >
-            Get to Know Me
+            Get to Know 
           </p>
           <h2
             className={`text-3xl sm:text-4xl lg:text-5xl font-light leading-tight ${

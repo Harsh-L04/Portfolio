@@ -44,15 +44,6 @@ const Project = () => {
         isDark ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
       }`}
     >
-      {/* Background Elements - Responsive positioning and sizing */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className={`absolute top-20 sm:top-32 md:top-40 right-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full blur-2xl sm:blur-3xl opacity-3 sm:opacity-5 ${
-          isDark ? "bg-blue-500" : "bg-blue-400"
-        }`} />
-        <div className={`absolute bottom-20 sm:bottom-32 md:bottom-40 left-1/4 w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full blur-2xl sm:blur-3xl opacity-3 sm:opacity-5 ${
-          isDark ? "bg-purple-500" : "bg-purple-400"
-        }`} />
-      </div>
 
       {/* Container with responsive max-width */}
       <div className="max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto relative z-10">
@@ -65,7 +56,7 @@ const Project = () => {
         >
           <motion.p 
             variants={itemvariants}
-            className={`text-xs sm:text-sm font-medium uppercase tracking-wide sm:tracking-widest mb-2 sm:mb-3 ${
+            className={`text-sm font-medium uppercase tracking-wider mb-2   ${
               isDark ? "text-gray-500" : "text-gray-600"
             }`}
           >

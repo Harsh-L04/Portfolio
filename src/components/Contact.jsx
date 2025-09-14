@@ -58,20 +58,7 @@ export default function Contact() {
         isDark ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
       }`}
     >
-      {/* Decorative background blur */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className={`absolute top-40 right-1/4 w-72 h-72 rounded-full blur-3xl opacity-5 ${
-            isDark ? "bg-blue-500" : "bg-blue-400"
-          }`}
-        />
-        <div
-          className={`absolute bottom-40 left-1/4 w-64 h-64 rounded-full blur-3xl opacity-5 ${
-            isDark ? "bg-purple-500" : "bg-purple-400"
-          }`}
-        />
-      </div>
-
+      
       {/* Section Content */}
       <motion.div
         initial="hidden"
