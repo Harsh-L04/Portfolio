@@ -55,39 +55,22 @@ root/
 Follow the steps below to run this project locally:
 
 ## Clone the repository
+```
 git clone https://github.com/Harsh-L04/Portfolio.git
+```
 
 ## Move into the project directory
+```
 cd portfolio
+```
 
 ## Install dependencies
+```
 npm install
+```
 
 ## Run the development server
+```
 npm run dev
+```
 
-
----
-
-## 🤝 Contributing
-This is a personal portfolio project, but suggestions and improvements are always welcome.
-If you’d like to contribute:
-
-1. Fork the repository
-
-2. Create a new branch
-
-git checkout -b feature-branch-name
-
-
-3. Commit your changes
-
-git commit -m "Add some feature"
-
-
-4. Push to your branch
-
-git push origin feature-branch-name
-
-
-5. Open a Pull Request
