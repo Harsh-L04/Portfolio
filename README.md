@@ -30,19 +30,21 @@ The website is hosted and deployed via **Vercel**.
 
 ## 🧩 Folder Structure
 
+```
 root/
 ├── public/
-│ ├── assets/
-│ └── index.html
+│   ├── assets/
+│   └── index.html
 ├── src/
-│ ├── components/
-│ ├── pages/
-│ ├── styles/
-│ ├── App.jsx
-│ ├── main.jsx
-│ └── ...
+│   ├── components/
+│   ├── pages/
+│   ├── styles/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── ...
 ├── package.json
 └── tailwind.config.js
+```
 
 
 
@@ -52,16 +54,16 @@ root/
 
 Follow the steps below to run this project locally:
 
-# Clone the repository
+## Clone the repository
 git clone https://github.com/Harsh-L04/Portfolio.git
 
-# Move into the project directory
+## Move into the project directory
 cd portfolio
 
-# Install dependencies
+## Install dependencies
 npm install
 
-# Run the development server
+## Run the development server
 npm run dev
 
 
