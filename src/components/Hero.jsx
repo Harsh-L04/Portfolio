@@ -200,16 +200,16 @@ const Hero = () => {
             </div>
 
             {/* MEDIUM DEVICES: Tablet Layout (768px - 1024px) */}
-            <div className="hidden md:block lg:hidden w-full">
+            <div className="hidden md:block xl:hidden w-full sm:block ">
               <motion.div
                 initial="hidden"
                 animate="visible"
                 variants={containervariants}
-                className="text-center space-y-8"
+                className="text-center space-y-4"
               >
                 {/* Profile Image - Medium */}
-                <motion.div variants={imagevariants} className="mb-8">
-                  <div className="w-40 h-40 mx-auto relative">
+                <motion.div variants={imagevariants} className="mb-6">
+                  <div className="w-40 h-45 mx-auto relative">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       className={`w-full h-full rounded-3xl overflow-hidden border-3 ${
